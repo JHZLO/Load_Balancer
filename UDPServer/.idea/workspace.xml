@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a094be01-4cc4-4b74-8191-9a7a28c753c8" name="Changes" comment="" />
+    <list default="true" id="a094be01-4cc4-4b74-8191-9a7a28c753c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/udpServer/UdpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/controller/LoadBalancerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/controller/LoadBalancerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/model/BackendServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/model/BackendServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthCheckTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/resources/servers.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/resources/servers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,9 +30,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2nVsUAzXFr4Xv7ZXg5BGBjke3Wj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,6 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.UDPServer [:UdpServer.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -37,6 +50,26 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="UdpServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.udpServer.UdpServer" />
+      <module name="UDPServer.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.udpServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.UdpServer" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -54,21 +87,11 @@
       <option name="presentableId" value="Default" />
       <updated>1729069593193</updated>
       <workItem from="1729069594472" duration="39000" />
+      <workItem from="1729082390707" duration="216000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
