@@ -5,6 +5,8 @@ public class BackendServer {
     private int port;
     private boolean available;
 
+    public BackendServer() {}
+
     public BackendServer(String ip, int port) {
         this.ip = ip;
         this.port = port;
