@@ -5,17 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a094be01-4cc4-4b74-8191-9a7a28c753c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/udpServer/UdpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../APIServer/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServer/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../APIServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/main/java/org/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/main/java/org/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HTTPServer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HTTPServer/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HTTPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HTTPServer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/controller/LoadBalancerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/controller/LoadBalancerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/model/BackendServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/model/BackendServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthCheckTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/resources/servers.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/resources/servers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TCPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TCPServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/udpServer/UdpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/udpServer/UdpServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +48,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/kjh01/Desktop/산업보안학과/3학년 2학기/분산처리/Load_Balancer_Project/UDPServer/src/main/java/org/example/Main.java",
     "vue.rearranger.settings.migration": "true"
@@ -52,8 +59,12 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="UdpServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="server.port" value="9000" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="org.udpServer.UdpServer" />
       <module name="UDPServer.main" />
+      <option name="PROGRAM_PARAMETERS" value="server.port = 9000" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.udpServer.*" />
@@ -88,6 +99,7 @@
       <updated>1729069593193</updated>
       <workItem from="1729069594472" duration="39000" />
       <workItem from="1729082390707" duration="216000" />
+      <workItem from="1729254928358" duration="2207000" />
     </task>
     <servers />
   </component>

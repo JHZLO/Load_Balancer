@@ -11,9 +11,9 @@ public class Client {
         ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
         // 여러 서버에 동시에 접속
-        executor.execute(() -> connectToUdpServer("127.0.0.1", 9000, "Hello, UDP Server!"));
-        executor.execute(() -> connectToTcpServer("127.0.0.1", 9001, "Hello, TCP Server!"));
-        executor.execute(() -> connectToHttpServer("127.0.0.1", 8080));
+        executor.execute(() -> connectToUdpServer("127.0.0.1", 8091, "Hello, UDP Server!"));
+        executor.execute(() -> connectToTcpServer("127.0.0.1", 8090, "Hello, TCP Server!"));
+        executor.execute(() -> connectToHttpServer("127.0.0.1", 8092));
 
         // 스레드 풀 종료
         executor.shutdown();

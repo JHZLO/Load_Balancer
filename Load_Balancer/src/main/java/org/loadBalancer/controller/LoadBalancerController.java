@@ -17,9 +17,9 @@ public class LoadBalancerController {
             // 백엔드 서버 헬스 체크 시작
             HealthChecker.startHealthCheck(servers);
 
-            new Thread(() -> TcpHandler.startTcpProxy(8080, servers)).start();
-            new Thread(() -> UdpHandler.startUdpProxy(8081, servers)).start();
-            new Thread(() -> HttpHandler.startHttpProxy(8082, servers)).start();
+            new Thread(() -> TcpHandler.startTcpProxy(8090, servers)).start();
+            new Thread(() -> UdpHandler.startUdpProxy(8091, servers)).start();
+            new Thread(() -> HttpHandler.startHttpProxy(8092, servers)).start();
 
         } catch (Exception e) {
             e.printStackTrace();
