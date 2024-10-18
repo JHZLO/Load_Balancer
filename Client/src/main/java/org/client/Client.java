@@ -69,7 +69,7 @@ public class Client {
             StringBuilder response = new StringBuilder();
 
             while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+                response.append(inputLine).append("\n"); // 응답을 줄 단위로 읽기
             }
             in.close();
 

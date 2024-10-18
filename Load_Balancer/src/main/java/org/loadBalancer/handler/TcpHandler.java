@@ -14,7 +14,7 @@ public class TcpHandler {
 
             while (true) {
                 Socket clientSocket = proxySocket.accept();
-                System.out.println("New TCP client connected: " + clientSocket.getInetAddress());
+                System.out.println("New TCP client connected: " + clientSocket.getInetAddress() + ":" + clientSocket.getPort());
 
                 new Thread(() -> handleTcpRequest(clientSocket, servers)).start();
             }
@@ -35,14 +35,20 @@ public class TcpHandler {
             return;
         }
 
+        System.out.println("Forwarding TCP request to backend server: " + backendServer.getIp() + ":" + backendServer.getPort());
+
         try (Socket serverSocket = new Socket(backendServer.getIp(), backendServer.getPort())) {
             forwardData(clientSocket, serverSocket);
+            System.out.println("Forwarded client request to backend server: " + backendServer.getIp() + ":" + backendServer.getPort());
+
             forwardData(serverSocket, clientSocket);
+            System.out.println("Forwarded backend server response to client: " + clientSocket.getInetAddress() + ":" + clientSocket.getPort());
         } catch (IOException e) {
             System.out.println("Error handling TCP request: " + e.getMessage());
         } finally {
             try {
                 clientSocket.close();
+                System.out.println("Closed client connection: " + clientSocket.getInetAddress() + ":" + clientSocket.getPort());
             } catch (IOException e) {
                 e.printStackTrace();
             }

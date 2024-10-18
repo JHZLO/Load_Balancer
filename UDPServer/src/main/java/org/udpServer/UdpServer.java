@@ -20,6 +20,7 @@ public class UdpServer {
             byte[] buffer = new byte[1024];
             while (true) {
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+
                 // 클라이언트로부터 데이터 수신
                 socket.receive(packet);
 
