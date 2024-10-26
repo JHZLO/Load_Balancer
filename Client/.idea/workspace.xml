@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b7bb21-84e0-4005-b844-0e646a617427" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../APIServer/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServer/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../APIServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../APIServer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HTTPServer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HTTPServer/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HTTPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HTTPServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/controller/LoadBalancerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/controller/LoadBalancerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/model/BackendServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/model/BackendServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/HealthChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/resources/servers.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/resources/servers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/ThreadPoolManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../TCPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TCPServer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UDPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UDPServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UDPServer/src/main/java/org/udpServer/UdpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UDPServer/src/main/java/org/udpServer/UdpServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,27 +32,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Client [:Client.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/kjh01/Desktop/산업보안학과/3학년 2학기/분산처리/Load_Balancer_Project/Client/src/main/java/org/example/Main.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Client [:Client.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/kjh01/Desktop/산업보안학과/3학년 2학기/분산처리/Load_Balancer_Project/Client/src/main/java/org/example/Main.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-24fca987" />
-        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-ebaef533" />
       </set>
     </attachedChunks>
   </component>
@@ -76,7 +66,8 @@
       <workItem from="1729069407412" duration="126000" />
       <workItem from="1729082348681" duration="40000" />
       <workItem from="1729082899924" duration="1008000" />
-      <workItem from="1729254735132" duration="2153000" />
+      <workItem from="1729254735132" duration="5636000" />
+      <workItem from="1729876619905" duration="83000" />
     </task>
     <servers />
   </component>
