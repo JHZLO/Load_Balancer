@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2ff6039-73dc-4842-bacc-facd561d7629" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HTTPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HTTPServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LoadBalancer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LoadBalancer/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LoadBalancer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../LoadBalancer/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/tcpServer/TcpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tcpServer/TCPServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UDPServer/src/main/java/org/udpServer/UdpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UDPServer/src/main/java/org/udpServer/UDPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UDPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UDPServer/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,23 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="TCPServer" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />

@@ -15,6 +15,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)  // Java 21을 사용하도록 지정
+    }
+}
+
 test {
     useJUnitPlatform()
 }
