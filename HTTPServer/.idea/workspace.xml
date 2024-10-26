@@ -7,9 +7,10 @@
     <list default="true" id="655938ba-3f18-49e0-b62b-f29aa291edc1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/util/ThreadPoolManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Load_Balancer/src/main/java/org/loadBalancer/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TCPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TCPServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UDPServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UDPServer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TCPServer/src/main/java/org/tcpServer/TcpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TCPServer/src/main/java/org/tcpServer/TCPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UDPServer/src/main/java/org/udpServer/UdpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UDPServer/src/main/java/org/udpServer/UDPServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +90,8 @@
       <workItem from="1729487083276" duration="552000" />
       <workItem from="1729495181739" duration="144000" />
       <workItem from="1729876659356" duration="31000" />
+      <workItem from="1729918467884" duration="1393000" />
+      <workItem from="1729928721257" duration="349000" />
     </task>
     <servers />
   </component>
