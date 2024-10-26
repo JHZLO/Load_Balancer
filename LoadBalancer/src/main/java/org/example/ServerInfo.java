@@ -6,6 +6,9 @@ public class ServerInfo {
     private int port;
     private boolean isActive;
 
+    public ServerInfo() {
+    }
+
     public ServerInfo(String protocol, String ipAddress, int port) {
         this.protocol = protocol;
         this.ipAddress = ipAddress;

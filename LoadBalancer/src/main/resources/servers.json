@@ -1,0 +1,10 @@
+{
+  "servers": [
+    {"protocol": "UDP", "ipAddress": "127.0.0.1", "port": 9001},
+    {"protocol": "UDP", "ipAddress": "127.0.0.1", "port": 9002},
+    {"protocol": "TCP", "ipAddress": "127.0.0.1", "port": 9003},
+    {"protocol": "TCP", "ipAddress": "127.0.0.1", "port": 9004},
+    {"protocol": "HTTP", "ipAddress": "127.0.0.1", "port": 8081},
+    {"protocol": "HTTP", "ipAddress": "127.0.0.1", "port": 8082}
+  ]
+}

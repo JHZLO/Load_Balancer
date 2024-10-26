@@ -130,7 +130,7 @@ public class LoadBalancer {
         });
         server.setExecutor(null);
         server.start();
-        System.out.println("Load Balancer started on port: " + port);
+        System.out.println("HTTP 로드밸런서가 포트 " + port + "에서 시작되었습니다.");
     }
 
     public ServerInfo getNextServer(String protocol) {
