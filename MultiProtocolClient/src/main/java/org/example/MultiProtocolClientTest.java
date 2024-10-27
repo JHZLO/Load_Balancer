@@ -17,7 +17,7 @@ public class MultiProtocolClientTest {
         int udpPort = 8888; // 로드밸런서의 UDP 포트
         int tcpPort = 8888; // 로드밸런서의 TCP 포트
         int httpPort = 9000; // 로드밸런서의 HTTP 포트
-        String serverAddress = "localhost";
+        String serverAddress = "10.20.0.154";
 
         // UDP 테스트 스레드
         Thread udpThread = new Thread(new UDPClientTask(serverAddress, udpPort));
