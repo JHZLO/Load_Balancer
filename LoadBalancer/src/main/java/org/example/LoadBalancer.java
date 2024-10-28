@@ -17,31 +17,32 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LoadBalancer {
     private List<ServerInfo> serverList;
     private AtomicInteger currentIndex = new AtomicInteger(0);
+    private final ExecutorService executorService;
 
     public LoadBalancer(List<ServerInfo> serverList) {
         this.serverList = serverList;
+        this.executorService = Executors.newFixedThreadPool(10); // 필요한 만큼 스레드 풀 크기 설정
     }
 
     public void start(int transportListeningPort, int APIListeningPort) {
-        // UDP 처리용 쓰레드
-        new Thread(() -> startUDP(transportListeningPort)).start();
-
-        // TCP 처리용 쓰레드
-        new Thread(() -> startTCP(transportListeningPort)).start();
-
-        // HTTP 처리용 쓰레드
-        new Thread(() -> {
+        // UDP, TCP, HTTP 처리를 각각의 스레드로 실행
+        executorService.submit(() -> startUDP(transportListeningPort));
+        executorService.submit(() -> startTCP(transportListeningPort));
+        executorService.submit(() -> {
             try {
                 startHttp(APIListeningPort);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }).start();
+        });
     }
 
     private void startUDP(int listeningPort) {
@@ -62,7 +63,10 @@ public class LoadBalancer {
                 InetAddress clientAddress = receivePacket.getAddress();
                 int clientPort = receivePacket.getPort();
 
-                forwardPacketToServer(server, receivePacket.getData(), clientAddress, clientPort);
+                // 비동기로 패킷 포워딩 처리
+                CompletableFuture.runAsync(
+                        () -> forwardPacketToServer(server, receivePacket.getData(), clientAddress, clientPort),
+                        executorService);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,26 +79,41 @@ public class LoadBalancer {
 
             while (true) {
                 Socket clientSocket = loadBalancerSocket.accept();
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
-                String receivedData = in.readLine();
-                System.out.println("클라이언트로부터 받은 TCP 데이터: " + receivedData);
-
-                ServerInfo server = getNextServer("TCP");
-                if (server == null) {
-                    System.out.println("활성화된 TCP 서버가 없습니다.");
-                    out.println("서버 오류: 활성화된 서버가 없습니다.");
-                    clientSocket.close();
-                    continue;
-                }
-
-                // 서버로 데이터 전송 및 응답 수신
-                String response = forwardDataToTCPServer(server, receivedData);
-                out.println(response);
-
-                clientSocket.close();
+                // 비동기로 TCP 연결 처리
+                CompletableFuture.runAsync(() -> handleTCPConnection(clientSocket), executorService);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleTCPConnection(Socket clientSocket) {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
+
+            // 클라이언트로부터 데이터 수신
+            String receivedData = in.readLine();
+            System.out.println("클라이언트로부터 받은 TCP 데이터: " + receivedData);
+
+            // 다음 서버를 선택
+            ServerInfo server = getNextServer("TCP");
+            if (server == null) {
+                System.out.println("활성화된 TCP 서버가 없습니다.");
+                out.println("서버 오류: 활성화된 서버가 없습니다.");
+                return;
+            }
+
+            // 서버로 데이터 전송 및 응답 수신 (비동기 수행 후 결과를 클라이언트에 전송)
+            CompletableFuture.supplyAsync(() -> forwardDataToTCPServer(server, receivedData), executorService)
+                    .thenAccept(response -> {
+                        if (response != null) {
+                            out.println(response);
+                        } else {
+                            out.println("서버 오류: 응답 없음");
+                        }
+                        out.flush();
+                    }).join();  // 결과가 완료될 때까지 기다림
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,13 +132,18 @@ public class LoadBalancer {
 
                     try {
                         ServerInfo targetServer = getNextServer(protocol);
-
-                        // 선택된 HTTP 서버로 요청을 전달하고 응답을 받음
-                        String response = forwardHttpRequest(targetServer, exchange);
-                        exchange.sendResponseHeaders(200, response.getBytes().length);
-                        OutputStream os = exchange.getResponseBody();
-                        os.write(response.getBytes());
-                        os.close();
+                        // 비동기로 HTTP 요청 처리
+                        CompletableFuture.supplyAsync(() -> forwardHttpRequest(targetServer, exchange), executorService)
+                                .thenAccept(response -> {
+                                    try {
+                                        exchange.sendResponseHeaders(200, response.getBytes().length);
+                                        OutputStream os = exchange.getResponseBody();
+                                        os.write(response.getBytes());
+                                        os.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                });
                     } catch (IllegalStateException e) {
                         exchange.sendResponseHeaders(503, -1); // 503 Service Unavailable
                     }
@@ -128,29 +152,11 @@ public class LoadBalancer {
                 }
             }
         });
-        server.setExecutor(null);
+        server.setExecutor(executorService);
         server.start();
         System.out.println("HTTP 로드밸런서가 포트 " + port + "에서 시작되었습니다.");
     }
 
-    public ServerInfo getNextServer(String protocol) {
-        // 프로토콜에 맞는 활성화된 서버 목록 필터링
-        List<ServerInfo> filteredServers = serverList.stream()
-                .filter(server -> server.getProtocol().equalsIgnoreCase(protocol) && server.isActive())
-                .toList();
-
-        if (filteredServers.isEmpty()) {
-            throw new IllegalStateException("No servers available for protocol: " + protocol);
-        }
-
-        int index = (currentIndex.incrementAndGet()) % filteredServers.size();
-        return filteredServers.get(index);
-    }
-
-    // 모든 서버 목록을 반환하는 메서드
-    public List<ServerInfo> getAllServers() {
-        return serverList;
-    }
 
     private void forwardPacketToServer(ServerInfo server, byte[] data, InetAddress clientAddress, int clientPort) {
         try (DatagramSocket socket = new DatagramSocket()) {
@@ -176,14 +182,22 @@ public class LoadBalancer {
              PrintWriter out = new PrintWriter(serverSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()))) {
 
+            // 서버로 데이터 전송
             out.println(data);
-            return in.readLine();
+            out.flush();
+
+            // 서버로부터 응답 수신
+            String response = in.readLine();  // 줄바꿈 문자 포함 응답
+            System.out.println("tcp로부터의 응답" + response);
+            if (response == null) {
+                return "서버 오류: 응답 없음";
+            }
+            return response;
         } catch (Exception e) {
             e.printStackTrace();
             return "서버 오류: TCP 서버와의 통신 실패";
         }
     }
-
     private String forwardHttpRequest(ServerInfo server, HttpExchange exchange) {
         try {
             URL url = new URL(
@@ -209,5 +223,24 @@ public class LoadBalancer {
             e.printStackTrace();
             return "서버 오류: HTTP 서버와의 통신 실패";
         }
+    }
+
+    public ServerInfo getNextServer(String protocol) {
+        // 프로토콜에 맞는 활성화된 서버 목록 필터링
+        List<ServerInfo> filteredServers = serverList.stream()
+                .filter(server -> server.getProtocol().equalsIgnoreCase(protocol) && server.isActive())
+                .toList();
+
+        if (filteredServers.isEmpty()) {
+            throw new IllegalStateException("No servers available for protocol: " + protocol);
+        }
+
+        int index = (currentIndex.incrementAndGet()) % filteredServers.size();
+        return filteredServers.get(index);
+    }
+
+    // 모든 서버 목록을 반환하는 메서드
+    public List<ServerInfo> getAllServers() {
+        return serverList;
     }
 }

@@ -6,27 +6,25 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SimpleHttpServer {
     private static int port;
+    private static final ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     public static void main(String[] args) throws IOException {
-        // 포트 번호를 인자로 받습니다. 기본값으로 8080 사용.
         port = args.length > 0 ? Integer.parseInt(args[0]) : 8080;
 
-        // HTTP 서버 생성
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
-
-        // "/health" 엔드포인트를 처리하는 핸들러 등록
         server.createContext("/", new HealthHandler());
 
-        // 서버 시작
-        server.setExecutor(null);
+        // 비동기 처리를 위해 ExecutorService 설정
+        server.setExecutor(executorService);
         server.start();
         System.out.println("Server started on port: " + port);
     }
 
-    // 헬스체크 엔드포인트에 대한 핸들러
     static class HealthHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -37,7 +35,7 @@ public class SimpleHttpServer {
                 os.write(response.getBytes());
                 os.close();
             } else {
-                exchange.sendResponseHeaders(405, -1); // 405 Method Not Allowed
+                exchange.sendResponseHeaders(405, -1);
             }
         }
     }

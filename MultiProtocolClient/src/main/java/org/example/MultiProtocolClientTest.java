@@ -98,8 +98,13 @@ class TCPClientTask implements Runnable {
                     out.println(message);
                     System.out.println("로드밸런서로 TCP 데이터 전송: " + message);
 
+                    // 서버로부터 응답 읽기
                     String response = in.readLine();
-                    System.out.println("서버로부터 받은 TCP 응답: " + response);
+                    if (response == null) {
+                        System.out.println("서버로부터 응답을 받지 못했습니다.");
+                    } else {
+                        System.out.println("서버로부터 받은 TCP 응답: " + response);
+                    }
                 }
             }
         } catch (Exception e) {

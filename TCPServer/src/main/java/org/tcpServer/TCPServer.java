@@ -5,12 +5,17 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TCPServer {
     private int port;
+    private final ExecutorService executorService;
 
     public TCPServer(int port) {
         this.port = port;
+        // Fixed thread pool 생성
+        this.executorService = Executors.newFixedThreadPool(10); // 필요에 따라 스레드 풀 크기를 조절
     }
 
     public void start() {
@@ -19,20 +24,35 @@ public class TCPServer {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-
-                String receivedData = in.readLine();
-                System.out.println("클라이언트로부터 받은 데이터: " + receivedData);
-
-                // 응답 생성 및 전송
-                String responseMessage = "TCP 응답: OK";
-                out.println(responseMessage);
-
-                clientSocket.close();
+                // 클라이언트 연결을 비동기로 처리
+                executorService.submit(() -> handleClient(clientSocket));
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void handleClient(Socket clientSocket) {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
+
+            String receivedData = in.readLine();
+            System.out.println("클라이언트로부터 받은 데이터: " + receivedData);
+
+            // 응답 생성 및 전송
+            String responseMessage = "TCP 응답: OK";
+            out.println(responseMessage);
+            out.flush();  // 강제 전송
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                clientSocket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
