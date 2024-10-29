@@ -32,10 +32,10 @@ public class LoadBalancer {
         this.executorService = Executors.newFixedThreadPool(10); // 필요한 만큼 스레드 풀 크기 설정
     }
 
-    public void start(int transportListeningPort, int APIListeningPort) {
+    public void start(int TCPListeningPort, int UDPListeningPort,int APIListeningPort) {
         // UDP, TCP, HTTP 처리를 각각의 스레드로 실행
-        executorService.submit(() -> startUDP(transportListeningPort));
-        executorService.submit(() -> startTCP(transportListeningPort));
+        executorService.submit(() -> startUDP(UDPListeningPort));
+        executorService.submit(() -> startTCP(TCPListeningPort));
         executorService.submit(() -> {
             try {
                 startHttp(APIListeningPort);
@@ -93,7 +93,6 @@ public class LoadBalancer {
 
             // 클라이언트로부터 데이터 수신
             String receivedData = in.readLine();
-            System.out.println("클라이언트로부터 받은 TCP 데이터: " + receivedData);
 
             // 다음 서버를 선택
             ServerInfo server = getNextServer("TCP");
@@ -107,6 +106,7 @@ public class LoadBalancer {
             CompletableFuture.supplyAsync(() -> forwardDataToTCPServer(server, receivedData), executorService)
                     .thenAccept(response -> {
                         if (response != null) {
+                            // 서버로부터 받은 응답을 클라이언트에게 전송
                             out.println(response);
                         } else {
                             out.println("서버 오류: 응답 없음");
@@ -116,10 +116,17 @@ public class LoadBalancer {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                clientSocket.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void startHttp(int port) throws IOException {
+        System.out.println("HTTP 로드밸런서가 포트 " + port + "에서 시작되었습니다.");
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/balance", new HttpHandler() {
             @Override
@@ -154,7 +161,6 @@ public class LoadBalancer {
         });
         server.setExecutor(executorService);
         server.start();
-        System.out.println("HTTP 로드밸런서가 포트 " + port + "에서 시작되었습니다.");
     }
 
 
@@ -188,7 +194,6 @@ public class LoadBalancer {
 
             // 서버로부터 응답 수신
             String response = in.readLine();  // 줄바꿈 문자 포함 응답
-            System.out.println("tcp로부터의 응답" + response);
             if (response == null) {
                 return "서버 오류: 응답 없음";
             }
@@ -198,6 +203,7 @@ public class LoadBalancer {
             return "서버 오류: TCP 서버와의 통신 실패";
         }
     }
+
     private String forwardHttpRequest(ServerInfo server, HttpExchange exchange) {
         try {
             URL url = new URL(

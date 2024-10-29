@@ -4,7 +4,9 @@
     {"protocol": "UDP", "ipAddress": "10.20.0.119", "port": 9002},
     {"protocol": "TCP", "ipAddress": "10.20.0.171", "port": 8080},
     {"protocol": "TCP", "ipAddress": "10.20.0.171", "port": 8081},
+    {"protocol": "TCP", "ipAddress": "10.20.0.171", "port": 8082},
     {"protocol": "HTTP", "ipAddress": "10.20.0.121", "port": 8080},
-    {"protocol": "HTTP", "ipAddress": "10.20.0.121", "port": 8081}
+    {"protocol": "HTTP", "ipAddress": "10.20.0.121", "port": 8081},
+    {"protocol": "HTTP", "ipAddress": "10.20.0.121", "port": 8082}
   ]
 }

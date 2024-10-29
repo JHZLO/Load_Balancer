@@ -14,7 +14,7 @@ import java.net.URL;
 public class MultiProtocolClientTest {
 
     public static void main(String[] args) {
-        int udpPort = 8888; // 로드밸런서의 UDP 포트
+        int udpPort = 8999; // 로드밸런서의 UDP 포트
         int tcpPort = 8888; // 로드밸런서의 TCP 포트
         int httpPort = 9000; // 로드밸런서의 HTTP 포트
         String serverAddress = "10.20.0.154";
@@ -98,13 +98,8 @@ class TCPClientTask implements Runnable {
                     out.println(message);
                     System.out.println("로드밸런서로 TCP 데이터 전송: " + message);
 
-                    // 서버로부터 응답 읽기
                     String response = in.readLine();
-                    if (response == null) {
-                        System.out.println("서버로부터 응답을 받지 못했습니다.");
-                    } else {
-                        System.out.println("서버로부터 받은 TCP 응답: " + response);
-                    }
+                    System.out.println("서버로부터 받은 TCP 응답: " + response);
                 }
             }
         } catch (Exception e) {

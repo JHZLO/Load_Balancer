@@ -19,7 +19,7 @@ public class Main {
         healthCheckThread.start();
 
         LoadBalancer loadBalancer = new LoadBalancer(serverList);
-        loadBalancer.start(8888, 9000);
+        loadBalancer.start(8888, 8999, 9000);
     }
 
     private static List<ServerInfo> loadServerInfoFromJson(String fileName) {
