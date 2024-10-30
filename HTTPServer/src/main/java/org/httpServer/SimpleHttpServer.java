@@ -29,6 +29,7 @@ public class SimpleHttpServer {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if ("GET".equals(exchange.getRequestMethod())) {
+                System.out.println("Remote Address: " + exchange.getRemoteAddress());
                 String response = "Hello World!" + " port: " + port;
                 exchange.sendResponseHeaders(200, response.getBytes().length);
                 OutputStream os = exchange.getResponseBody();

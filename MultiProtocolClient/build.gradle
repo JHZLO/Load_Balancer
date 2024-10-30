@@ -8,7 +8,7 @@ version = '1.0-SNAPSHOT'
 jar {
     manifest {
         attributes(
-                'Main-Class': 'org.example.MultiProtocolClientTest'
+                'Main-Class': 'org.client.MultiProtocolClient'
         )
     }
 }

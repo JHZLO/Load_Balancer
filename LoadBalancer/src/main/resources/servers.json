@@ -2,6 +2,7 @@
   "servers": [
     {"protocol": "UDP", "ipAddress": "10.20.0.119", "port": 9001},
     {"protocol": "UDP", "ipAddress": "10.20.0.119", "port": 9002},
+    {"protocol": "UDP", "ipAddress": "10.20.0.119", "port": 9003},
     {"protocol": "TCP", "ipAddress": "10.20.0.171", "port": 8080},
     {"protocol": "TCP", "ipAddress": "10.20.0.171", "port": 8081},
     {"protocol": "TCP", "ipAddress": "10.20.0.171", "port": 8082},

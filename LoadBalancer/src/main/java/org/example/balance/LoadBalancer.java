@@ -16,7 +16,7 @@ public class LoadBalancer {
 
     public LoadBalancer(List<ServerInfo> serverList) {
         this.serverList = serverList;
-        this.executorService = Executors.newFixedThreadPool(10);
+        this.executorService = Executors.newCachedThreadPool();
         this.tcpHandler = new TCPHandler(this);
         this.udpHandler = new UDPHandler(this);
         this.httpHandler = new HTTPHandler(this);

@@ -42,7 +42,7 @@ public class UDPServer {
             System.out.println("클라이언트로부터 받은 데이터: " + receivedData);
 
             // 응답 생성
-            String responseMessage = "OK";
+            String responseMessage = "OK\n";
             byte[] sendBuffer = responseMessage.getBytes();
 
             // 클라이언트의 주소와 포트 가져오기
