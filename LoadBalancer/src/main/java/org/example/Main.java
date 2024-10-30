@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import org.example.balance.LoadBalancer;
 
 public class Main {
     public static void main(String[] args) {
