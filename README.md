@@ -3,7 +3,6 @@
 
 [[Java로 로드밸런서 구현하기] 로드밸런서의 개념 (1)](https://jhzlo.tistory.com/45)
 
-[[Java로 로드밸런서 구현하기] L3/L4 로드밸런서에 대해 알아보자 (2)](https://jhzlo.tistory.com/46)
 <br>
 
 
