@@ -68,3 +68,25 @@
         - 컴파일하고 run어떻게 하는지
     - 스크린샷
     - 성능에 대한 그래프와 테이블
+
+
+## 테스트
+![image](https://github.com/user-attachments/assets/db82b4e9-ac78-47f8-a58f-c673ebed920e)
+![image](https://github.com/user-attachments/assets/6186026c-5dd0-4f6d-930b-9e84bead6f14)
+![image](https://github.com/user-attachments/assets/838f1fcd-0dfc-4e31-956e-59be75a38a8b)
+![image](https://github.com/user-attachments/assets/c24d200b-887a-4f1a-9af8-a2251ec7e742)
+
+### 트러블 슈팅
+![image](https://github.com/user-attachments/assets/6ac4bc92-5c95-43f8-a7cb-9a14822e372c)
+
+![image](https://github.com/user-attachments/assets/c24d47bd-a17d-4839-b5eb-13c03585fa2e)
+
+![image](https://github.com/user-attachments/assets/6732372f-1fc8-4b46-ba47-1f1b11451a21)
+
+
+## 부하테스트
+![image](https://github.com/user-attachments/assets/b6343ddf-b041-412d-96d4-248ffbfe3836)
+
+
+
+
